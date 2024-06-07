@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Modifier un produit {% endblock %}
+{% block contenu %}
+<h1>Modifier un produit</h1>
+
+{% if form.produit is defined %}
+ {% if form.produit != null %}
+
+ <form class="form-signin" action="index.php?page=produitModif" method="post" enctype="application/x-www-form-urlencoded">
+
+        <div class="form-group">
+            <label for="inputDesignation" class="sr-only"></label>
+            Nom du produit :<input type="text" class="form-control" id="nom" name="inputDesignation" placeholder="Modifier le nom du produit" value="{{form.produit.designation}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputDescription" class="sr-only"></label>
+            Description :<textarea class="form-control" id="description" name="inputDescription" placeholder="Modifier la description du produit" rows="4" required>{{form.produit.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="inputPrix" class="sr-only"></label>
+            Prix :<input type="number" class="form-control" id="prix" name="inputPrix" placeholder="Modifier le prix du produit" value="{{form.produit.prix}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputLibelle" class="sr-only"></label>
+            Type :<input type="number" class="form-control" id="inputLibelle" name="inputLibelle" placeholder="Modifier le type de produit" value="{{form.produit.type}}" required>
+        </div>
+        <div class="form-group">
+            <label for="photo" class="sr-only"></label>
+            Photo :<input type="file" name="photo" id="photo" class="form-control" value="{{form.produit.photo}}"></input>
+        </div>
+
+{% if form.produit.photo is not empty %}
+<img src="images/{{form.produit.photo}}" />
+{% else %}
+<img src="images/image-non-disponible.jpg" />
+{% endif %}
+
+<input type="hidden" name="id" value="{{ form.produit.id }}"/>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifier">Modifier</button>
+
+
+{% else %}
+ <h2 class="alert alert-danger" role="alert">{{ form.message }}</h2>
+ <a href="index.php?page=produit">Retourner sur la liste des produits</a>
+ {% endif %}
+{% else %}
+
+ {% if form.valide == true %}
+ <h1 class="h3 mb-3 font-weight-normal">{{ form.message }} </h1>
+ <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=produit">Retourner sur la liste des produits</a></h1>
+ {% else %}
+ <h1 class="alert alert-danger" role="alert">{{ form.message }}</h1>
+ <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=produit">Retourner sur la liste des produits</a></h1>
+ {% endif %}
+{% endif %}
+</form>
+
+{% endblock %}
+ 

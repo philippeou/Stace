@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Ajouter un produit {% endblock %}
+{% block contenu %}
+
+<div class="container">
+    <h2>Ajouter un produit</h2>
+
+
+    <form class="form-signin" action="index.php?page=produitAjout" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="inputDesignation">Nom du produit :</label>
+            <input type="text" class="form-control" id="nom" name="inputDesignation" placeholder="Entrez le nom du produit" required>
+        </div>
+        <div class="form-group">
+            <label for="inputDescription">Description :</label>
+            <textarea class="form-control" id="description" name="inputDescription" placeholder="Entrez la description du produit" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="inputPrix">Prix :</label>
+            <input type="number" class="form-control" id="prix" name="inputPrix" placeholder="Entrez le prix du produit" required>
+        </div>
+        <div class="form-group">
+            <label for="idType">Type :</label>
+            <input type="number" class="form-control" id="idType" name="idType" placeholder="Entrez le type de produit" required>
+        </div>
+        <div class="form-group">
+            <label for="photo">Photo :</label>
+            <input type="file" name="photo" id="photo" class="form-control"/>
+        </div>
+        <button type="submit"  name="btAjouter" class="btn btn-primary">Ajouter le produit</button>
+    </form>
+</div>
+
+{% endblock %}

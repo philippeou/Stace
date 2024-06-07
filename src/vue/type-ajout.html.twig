@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Ajouterun type {% endblock %}
+{% block contenu %}
+
+<div class="container">
+    <h2>Ajouter un type</h2>
+
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="inputLibelle">Nom du type :</label>
+            <input type="text" class="form-control" id="nom" name="inputLibelle" placeholder="Entrez le nom du type" required>
+        </div>
+        <button type="submit"  name="btAjouter" class="btn btn-primary">Ajouter le type</button>
+    </form>
+</div>
+
+{% endblock %}

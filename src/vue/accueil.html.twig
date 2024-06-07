@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Accueil {% endblock %}
+{% block contenu %} 
+
+
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenue dans Stace</h1>
+        <p class="lead">Découvrez notre sélection de produits de qualité.</p>
+        <hr class="my-4">
+        <p>Explorez notre catalogue et trouvez ce que vous recherchez.</p>
+        <a class="btn btn-primary btn-lg" href="index.php?page=recherche&recherche=" role="button">Voir les produits</a>
+    </div>
+
+    <!-- Exemple de produits -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/good_smile_nendoroid_gawr_gura_hololive_production_10_cm_figure.jpg" class="card-img-top" alt="Produit 1">
+                <div class="card-body">
+                    <h5 class="card-title">Gawr Gura Nendoroid</h5>
+                    <p class="card-text">Provenant de Hololive Vtuber. "Domo ! Same desu !"</p>
+                    <a href="index.php?page=produitFiche&id=2" class="btn btn-primary">Voir le produit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/hololive-production-figurine-la-darkness-nendoroid.webp" class="card-img-top" alt="Produit 2">
+                <div class="card-body">
+                    <h5 class="card-title">La+ Darknesss Nendoroid</h5>
+                    <p class="card-text">Provenant de Hololive Vtuber. "Heed my call !"</p><br>
+                    <a href="index.php?page=produitFiche&id=3" class="btn btn-primary">Voir le produit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/date_a_live_iv_figurine_nendoroid_origami_tobiichi_spirit_ver_good_smile_company.jpg" class="card-img-top" alt="Produit 3">
+                <div class="card-body">
+                    <h5 class="card-title">Origami Tobiichi Nendoroid</h5>
+                    <p class="card-text">Provenant de Date A Live IV. </p><br>
+                    <a href="index.php?page=produitFiche&id=5" class="btn btn-primary">Voir le produit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

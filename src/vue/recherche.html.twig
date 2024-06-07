@@ -1,0 +1,184 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Résultat de votre recherche {% endblock %}
+{% block contenu %}
+
+<head>
+    <title>Résultats de la recherche</title>
+</head>
+<body>
+
+    <h1 class="text-blk title">Résultats</h1><br>
+
+    {% if resultats %}
+        <ul>
+            <div class="responsive-container-block">
+            {% for resultat in resultats %}
+                <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
+                    <div class="card">
+                        <div id="image-container">
+                            <div class="team-image-wrapper">
+                                {% if resultat.photo is not empty %}
+                                <img class="team-member-image" src="images/{{resultat.photo}}">
+                                {% else %}
+                                <img class="team-member-image" src="images/image-non-disponible.jpg">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p class="text-blk name">{{ resultat.designation }}</p>
+                        {% if resultat.description|length > 45 %}
+                        <p class="text-blk position">{{ resultat.description|slice(0,45) }}...</p>
+                        {% else %}
+                        <br>
+                        <p class="text-blk position">{{ resultat.description }}</p>
+                        {% endif %}
+                        <br><div class="espace"></div>
+                        <p class="text-blk feature-text">{{ resultat.prix }}€</p>
+                        <p class="text-blk feature-text">{{ resultat.type }}</p>
+                        <form method="get" action="index.php?page=produitFiche"><a href="index.php?page=produitFiche&id={{ resultat.id }}" class="btn btn-primary"> Ajouter au panier </a></form>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </ul>
+
+
+    {% else %}
+        <p>Aucun résultat trouvé.</p>
+    {% endif %}
+
+
+
+</body>
+
+<style>
+
+  .text-blk {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    line-height: 25px;
+  }
+  
+  .responsive-container-block {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    justify-content: space-evenly;
+  }
+  
+  .team-head-text {
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  .team-head-text {
+    line-height: 50px;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+  }
+  
+  .container {
+    max-width: 1380px;
+    margin-top: 60px;
+    margin-right: auto;
+    margin-bottom: 60px;
+    margin-left: auto;
+    padding-top: 0px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-left: 30px;
+  }
+  
+  .card {
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 20px 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    padding-right: 25px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+    max-height: 470px;
+    min-height: 470px;
+  }
+  
+  .card-container {
+    width: 280px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+  }
+  
+  .name {
+    margin-top: 30px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .title {
+    text-align: center;
+    margin-top: 30px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    font-size: 40px;
+    font-weight: 800;
+  }
+  
+  .feature-text {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    color: rgb(122, 122, 122);
+    line-height: 30px;
+  }
+
+  #image-container-three {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .team-image-wrapper {
+    margin-bottom: -30px;
+    width: 180px;
+    height: 180px;
+  }
+  
+  .team-member-image {
+    width: 100%;
+  }
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+
+  .image-container-three {
+    flex-direction: column;
+  }
+}
+</style>
+
+{% endblock %}
